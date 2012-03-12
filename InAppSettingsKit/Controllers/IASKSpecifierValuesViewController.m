@@ -149,6 +149,7 @@
     }
 	
 	@try {
+        cell.backgroundColor = [[UITableViewCell appearance] backgroundColor];
 		[[cell textLabel] setText:[self.settingsReader titleForStringId:[titles objectAtIndex:indexPath.row]]];
 	}
 	@catch (NSException * e) {}

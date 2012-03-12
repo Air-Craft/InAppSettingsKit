@@ -385,7 +385,8 @@ CGRect IASKCGRectSwap(CGRect rect);
 																					 options:nil] objectAtIndex:0];
         }
         ((IASKPSToggleSwitchSpecifierViewCell*)cell).label.text = [specifier title];
-
+        cell.backgroundColor = [[UITableViewCell appearance] backgroundColor];
+        
 		id currentValue = [self.settingsStore objectForKey:key];
 		BOOL toggleState;
 		if (currentValue) {
@@ -409,6 +410,7 @@ CGRect IASKCGRectSwap(CGRect rect);
         if (!cell) {
             cell = [[IASKPSTitleValueSpecifierViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[specifier type]];
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.backgroundColor = [[UITableViewCell appearance] backgroundColor];
 		}
         [[cell textLabel] setText:[specifier title]];
 		[[cell detailTextLabel] setText:[[specifier titleForCurrentValue:[self.settingsStore objectForKey:key] != nil ? 
@@ -419,6 +421,7 @@ CGRect IASKCGRectSwap(CGRect rect);
         if (!cell) {
             cell = [[IASKPSTitleValueSpecifierViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[specifier type]];
 			cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.backgroundColor = [[UITableViewCell appearance] backgroundColor];
         }
 		
 		cell.textLabel.text = [specifier title];
@@ -445,6 +448,7 @@ CGRect IASKCGRectSwap(CGRect rect);
             ((IASKPSTextFieldSpecifierViewCell*)cell).textField.textAlignment = UITextAlignmentLeft;
             ((IASKPSTextFieldSpecifierViewCell*)cell).textField.returnKeyType = UIReturnKeyDone;
             cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.backgroundColor = [[UITableViewCell appearance] backgroundColor];
         }
 
 		((IASKPSTextFieldSpecifierViewCell*)cell).label.text = [specifier title];
@@ -490,6 +494,7 @@ CGRect IASKCGRectSwap(CGRect rect);
         slider.value =  [self.settingsStore objectForKey:key] != nil ? [[self.settingsStore objectForKey:key] floatValue] : [[specifier defaultValue] floatValue];
         [slider addTarget:self action:@selector(sliderChangedValue:) forControlEvents:UIControlEventValueChanged];
         slider.key = key;
+        cell.backgroundColor = [[UITableViewCell appearance] backgroundColor];
 		[cell setNeedsLayout];
         return cell;
     }
@@ -497,6 +502,7 @@ CGRect IASKCGRectSwap(CGRect rect);
         if (!cell) {
             cell = [[IASKPSTitleValueSpecifierViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[specifier type]];
 			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            cell.backgroundColor = [[UITableViewCell appearance] backgroundColor];
         }
 
         [[cell textLabel] setText:[specifier title]];
@@ -505,6 +511,7 @@ CGRect IASKCGRectSwap(CGRect rect);
         if (!cell) {
             cell = [[IASKPSTitleValueSpecifierViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[specifier type]];
 			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            cell.backgroundColor = [[UITableViewCell appearance] backgroundColor];
         }
 
 		cell.textLabel.text = [specifier title];
@@ -522,7 +529,7 @@ CGRect IASKCGRectSwap(CGRect rect);
             cell = [[IASKPSTitleValueSpecifierViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[specifier type]];
 			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         }
-        
+        cell.backgroundColor = [[UITableViewCell appearance] backgroundColor];
 		cell.textLabel.text = [specifier title];
 		cell.detailTextLabel.text = [[specifier defaultValue] description];
 		return cell;
@@ -531,6 +538,7 @@ CGRect IASKCGRectSwap(CGRect rect);
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[specifier type]];
         }
         [[cell textLabel] setText:[specifier title]];
+        cell.backgroundColor = [[UITableViewCell appearance] backgroundColor];
         return cell;
     }
 }
